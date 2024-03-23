@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}booking{% endblock title %}
+{% block content %}
+
+<div class="container p-3 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>BOOK YOUR EVENTS</h1>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success text-center" type="submit">submit</button>
+    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
