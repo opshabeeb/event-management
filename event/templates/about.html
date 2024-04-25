@@ -1,5 +1,96 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}about{% endblock title %}
 {% block content %}
-<h1 class="m-5">about</h1>
+<style>
+    
+    .card-subtitle::first-letter{
+        color:rgb(124, 70, 231);
+    }
+    .desc::first-letter{
+        font-size: 18px;
+        color: rgb(124, 70, 231);
+    }
+</style>
+<div class="conatiner-fluid d-flex align-items-center justify-content-center topcontainer" style="background-image: url({% static "images/about.jpg" %});background-size: cover; background-repeat: no-repeat; background-position: center;position:relative;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+   <h1 style="position: relative;">About Us</h1>
+</div>
+
+<div class="container-xxl mt-5 mb-5">
+    <div class="row ps-3 pe-3">
+        <div class="col-md-4">
+            <img src="{% static "images/owner.jpg" %}" alt="" class="image-fluid" height="430px" width="400px" style="border-radius: 6px;">
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center mb-4" style="font-size: 38px;">Managing Corporate Events For More Than 25 Years </h2>
+            <p>For over 25 years, our dedicated team has been at the forefront of managing corporate events with precision, expertise, and unwavering commitment. With a wealth of experience in the industry, we have meticulously orchestrated countless successful events, exceeding the expectations of our clients time and again. From meticulously planning every detail to flawlessly executing the event on the day, our seasoned professionals ensure that each corporate gathering is a seamless and memorable experience. Our comprehensive approach encompasses everything from conceptualization to post-event evaluation, ensuring that every aspect is carefully considered and executed to perfection. With our proven track record of excellence.</p>
+            <h3 class="text-light">Calvin Reese</h3>
+            <p class="text-light"><small>founder,ceo</small></p>
+        </div>
+    </div>
+</div>
+
+<div class="conatiner-fluid">
+    <div class="container mt-5 text-center">
+        <h1>Why Choose Us!</h1>
+        <p>Discover unparalleled service, reliability, and expertise with us.</p>
+    </div>
+    <div class="container-xxl">
+        <div class="row">
+            {% for i in cards_info %}
+            <div class="col-md-4 mb-4">
+                <div class="card" style="width: 25rem; height:15rem">
+                    <div class="card-body">
+                      <h6 class="card-title mt-2 mb-2" style="color:rgb(124, 70, 231) ;"><small>{{i.no}}</small></h6>
+                      <h4 class="card-subtitle mb-2 text-body-secondary mb-3" style="border-left: 3px solid  rgb(124, 70, 231);font-size: 27px;">&nbsp;{{i.name}}</h4>
+                      <p class="card-text desc">{{i.description}}</p>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+    </div>
+    
+        
+    </div>
+    
+</div>
+<div class="container-fluid">
+    <div class="container mt-5 text-center">
+        <h1>Meet Our Team</h1>
+        <p>Discover the faces behind our success. Meet our dedicated team, each bringing their unique expertise to drive innovation and excellence</p>
+    </div>
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static "images/team1.png" %}" alt="" width="350px">
+                <div class="container ms-2">
+                    <h4 style="border-left: 3px solid rgb(124, 70, 231);">&nbsp;John Austin</h4>
+                    <span style="color: rgb(124, 70, 231);"><small>co-founder and cfo</small></span>
+                    <p>Sapien neque suspendisse sit eget netus ullamcorper at ipsum placerat arcu porttitor pretium magna feugiat odio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static "images/team2.png" %}" alt="" width="350px">
+                <div class="container ms-2">
+                    <h4 style="border-left: 3px solid rgb(124, 70, 231);">&nbsp;Amelia Tan</h4>
+                    <small style="color: rgb(124, 70, 231);">Event director</small>
+                    <p>Sapien neque suspendisse sit eget netus ullamcorper at ipsum placerat arcu porttitor pretium magna feugiat odio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static "images/team3.png" %}" alt="" width="350px">
+                <div class="container ms-2">
+                    <h4 style="border-left: 3px solid rgb(124, 70, 231);">&nbsp;Dan Jackson</h4>
+                    <small style="color: rgb(124, 70, 231);">Production Manager</small>
+                    <p>Sapien neque suspendisse sit eget netus ullamcorper at ipsum placerat arcu porttitor pretium magna feugiat odio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

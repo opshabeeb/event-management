@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}event{% endblock title %}
+{% block content %}
+{% if user.is_authenticated and user.is_staff or user.is_superuser  %}
+<div class="conatiner-fluid d-flex align-items-center justify-content-center topcontainer mb-5" style="background-image: url({% static "images/about.jpg" %});background-size: cover; background-repeat: no-repeat; background-position: center;position:relative;">
+  <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+ <h1 style="position: relative;">Our Services</h1>
+</div>
+<div class="container">
+    <form method="post" enctype="multipart/form-data" action="{% url "formupdate" Data.id %}">
+        {% csrf_token %}
+        <label for="id_name">Name:</label>
+        <input type="text" id="id_name" name="name" value="{{Data.name}}" required><br><br>
+        
+        <label for="id_description">Description:</label>
+        <textarea rows="7" id="id_description" name="description" required>{{ Data.description }}</textarea><br><br>
+        <label for="id_image">Current Image:</label><br>
+        <img src="{{ Data.image.url }}" alt="Current Image" style="max-width: 200px;"><br><br>
+        
+        <label for="id_image">Image:</label>
+        <input type="file" id="id_image" name="image" required><br><br>
+        
+       <button type="submit">edit Service</button>
+      </form>
+</div>
+{% else %}
+  <h1 class="text-center">you are not autheraised to view this page</h1>
+{% endif %}
+{% endblock %}

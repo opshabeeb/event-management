@@ -2,21 +2,58 @@
 {% load static %}
 {% block title %}event{% endblock title %}
 {% block content %}
-<h1 class="text-center"> events </h1>
-<div class="container">
-  <div class="row">
-    {% for e in eve %}
-      <div class="col-md-3">
-        <div class="card mb-4">
-          <img src="{{ e.image.url }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ e.name }}</h5>
-            <p class="card-text">{{ e.description }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="conatiner-fluid d-flex align-items-center justify-content-center topcontainer mb-5" style="background-image: url({% static "images/about.jpg" %});background-size: cover; background-repeat: no-repeat; background-position: center;position:relative;">
+  <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+ <h1 style="position: relative;">Our Services</h1>
+</div>
+
+<div class="container-fluid mt-5">
+  <p class="small-title text-center mx-auto mt-5" style="max-width: 140px;">our services</p>
+  <h1 class="text-center mt-2 mb-3">Corporate Event Management</h1>
+  <p class="text-center mt-2 mb-5">Lobortis arcu at suspendisse arcu egestas lectus purus magna interdum aliquam scelerisque.</p>
+  <div class="container-fluid">
+      <div class="row">
+          {% for e in eve %}
+          <div class="col-md-4 col-sm-6 mb-4">
+              <div class="card" style="max-width: 400px;">
+                  <img src="{{ e.image.url }}" class="card-img-top" alt="..." style="height: 270px;">
+                  <div class="card-body" style="background-color:rgb(205, 191, 234);">
+                      <h5 class="card-title" style="border-left: 3px solid rgb(124, 70, 231); font-weight: 600; margin-bottom: 0;">&nbsp;{{ e.name }}</h5>
+                      <p class="card-text" style="margin-bottom: 0;">{{ e.description }}</p>
+                      <a href="#" class="btn button mt-2">know more</a>
+                       {% if user.is_authenticated and user.is_staff or user.is_superuser  %}
+                      <a href="{% url "edit" e.id %}" class="btn button mt-2">edit</a>
+                      {% endif %}
+                  </div>
+              </div>
           </div>
-        </div>
+          {% endfor %}
       </div>
-    {% endfor %}
   </div>
+</div>
+
+<div class="conatiner-fluid mb-5 mt-5">
+  <div class="container mt-5 text-center mb-5">
+    <p class="small-title text-center mx-auto mb-3" style="max-width: 140px;">Our Process</p>
+      <h1 style="font-weight: 600;">We Handle It All</h1>
+  </div>
+  <div class="container-xxl">
+      <div class="row">
+          {% for i in card %}
+          <div class="col-md-4 mb-4">
+              <div class="card" style="width: 25rem; height:15rem">
+                  <div class="card-body">
+                    <h6 class="card-title mt-2 mb-2" style="color:rgb(124, 70, 231) ;"><small>{{i.no}}</small></h6>
+                    <h4 class="card-subtitle mb-2 text-body-secondary mb-3" style="border-left: 3px solid  rgb(124, 70, 231);font-size: 27px;">&nbsp;{{i.name}}</h4>
+                    <p class="card-text desc">{{i.description}}</p>
+                  </div>
+                </div>
+          </div>
+          {% endfor %}
+  </div>
+  
+      
+  </div>
+  
 </div>
 {% endblock content %}
